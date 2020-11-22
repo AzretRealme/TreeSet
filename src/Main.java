@@ -1,37 +1,29 @@
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+
+import java.util.Comparator;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args){
-        Set<Integer> hashset = new HashSet<>();
-        hashset.add(12);
-        hashset.add(20);
-        hashset.add(25);
-        hashset.add(10);
+        Comparator<Integer> comparator = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2.compareTo(o1);
+            }
+        };
+        TreeSet<Integer> treeSet = new TreeSet<>(new Custom());
+        treeSet.add(22);
+        treeSet.add(33);
+        treeSet.add(44);
+        treeSet.add(55);
 
-        //hashset.add(10);
-        for(Integer g: hashset){
+        for(Integer g: treeSet){
             System.out.println(g);
         }
+        System.out.println("---------------");
+        System.out.println(treeSet.ceiling(23) + " ceiling");
+        System.out.println(treeSet.higher(53) + " higher");
+        System.out.println(treeSet.lower(50) + " lower");
 
-        System.out.println(hashset.size());
-        System.out.println(hashset.isEmpty());
-        System.out.println(hashset.contains(10));
-        System.out.println(hashset.remove(12));
-
-        Set<Integer> linkedHashSet = new LinkedHashSet<>();
-        linkedHashSet.add(12);
-        linkedHashSet.add(20);
-        linkedHashSet.add(25);
-        linkedHashSet.add(10);
-
-        for(Integer w: linkedHashSet){
-            System.out.println(w);
-        }
-        System.out.println(hashset.size());
-        System.out.println(linkedHashSet.isEmpty());
-        System.out.println(linkedHashSet.contains(10));
-        System.out.println(linkedHashSet.remove(12));
     }
 }
+
